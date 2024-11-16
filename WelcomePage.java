@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class WelcomePage {
-    
-    // Method to display the welcome dialog
-    public static void showWelcomeDialog(JFrame parentFrame) {
-        JDialog dialog = new JDialog(parentFrame, "Welcome", true);  // Modal dialog
+
+    public WelcomePage() {
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Welcome");
         dialog.setSize(300, 150);
         dialog.setLayout(new BorderLayout());
     
@@ -31,7 +31,12 @@ public class WelcomePage {
     
         // Add the button to the dialog
         dialog.add(welcomeButton, BorderLayout.SOUTH);
-        dialog.setLocationRelativeTo(parentFrame); // Center the dialog on the screen
+        dialog.setModal(true);
+        dialog.setLocationRelativeTo(null); // Center the dialog on the screen
         dialog.setVisible(true); // Show the dialog
+    }
+
+    public static void main(String[] args) {
+        new WelcomePage(); // To display the welcome page
     }
 }
