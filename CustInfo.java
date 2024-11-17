@@ -5,7 +5,7 @@ public class CustInfo {
     private String custID;
     private String custName;
     private String vehiclePlateNum;
-    private List<ServiceInfo> serviceReq; // List to store service requests for the customer
+    private final List<ServiceInfo> serviceReq; // List to store service requests for the customer
     
     // Constructor
     public CustInfo(String id, String name, String plateNum) {
@@ -50,11 +50,23 @@ public class CustInfo {
         serviceReq.add(service); // Add a single service to the service list
     }
     
-    // String representation of the customer information
+    // String representation of the customer information including service details
     @Override
     public String toString() {
-        return custID + "\t" + 
-               custName + "\t" + 
-               vehiclePlateNum + "\t";
+        StringBuilder customerInfo = new StringBuilder();
+        customerInfo.append("Customer ID: ").append(custID).append("\n");
+        customerInfo.append("Customer Name: ").append(custName).append("\n");
+        customerInfo.append("Vehicle Plate Number: ").append(vehiclePlateNum).append("\n");
+
+        if (serviceReq.isEmpty()) {
+            customerInfo.append("No services requested.\n");
+        } else {
+            customerInfo.append("Requested Services:\n");
+            for (ServiceInfo service : serviceReq) {
+                customerInfo.append("\t").append(service.toString()).append("\n");
+            }
+        }
+
+        return customerInfo.toString(); // Return full information about the customer and services
     }
 }
