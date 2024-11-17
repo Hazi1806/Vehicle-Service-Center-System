@@ -1,7 +1,6 @@
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+
 
 public class WelcomePage {
 
@@ -22,12 +21,9 @@ public class WelcomePage {
         welcomeButton.setPreferredSize(new Dimension(100, 30)); // Smaller button size
     
         // Add action listener to the button
-        welcomeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dialog.dispose(); // Close the welcome dialog
-            }
-        });
+        // Add action listener to the button using lambda expression
+        welcomeButton.addActionListener(e -> dialog.dispose()); // Close the welcome dialog
+
     
         // Add the button to the dialog
         dialog.add(welcomeButton, BorderLayout.SOUTH);
@@ -36,7 +32,4 @@ public class WelcomePage {
         dialog.setVisible(true); // Show the dialog
     }
 
-    public static void main(String[] args) {
-        new WelcomePage(); // To display the welcome page
-    }
 }
