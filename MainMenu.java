@@ -6,17 +6,20 @@ import javax.swing.*;
 public class MainMenu {
     private ServiceQueue serviceQueue;
     private final LinkedList<CustInfo> custList;
-    private StackManagement stackManagement;
+    private CompleteStack completeStack;
 
     public MainMenu() {
         custList = new LinkedList<>();
         serviceQueue = new ServiceQueue();
-        stackManagement = new StackManagement();
+        completeStack = new CompleteStack();
 
         new WelcomePage(); // Calls WelcomeDialog class for welcome message
 
         // Read customers from file into custList
         loadCustomersFromFile("C:\\Users\\user\\Coding Folder\\JAVA\\Project baru\\SWC3344_PROJECT\\CustomersLists.txt", custList);
+
+        // Load completed transactions
+        completeStack.loadFromFile("CompletedTransactions.txt");
 
         // Create the main frame
         JFrame frame = new JFrame("Vehicle Service Center");
@@ -42,104 +45,308 @@ public class MainMenu {
         // Declare buttons
         JButton addButton = new JButton(" 1 - Add a new customer/service ");
         JButton removeButton = new JButton(" 2 - Remove customer/service ");
-        JButton displayButton = new JButton(" 3 - Display customer/service ");
-        JButton queueButton = new JButton(" 4 - Display customer by lane ");
-        JButton exitButton = new JButton(" 5 - Exit "); 
+        JButton displayManageButton = new JButton(" 3 - Display and Manage ");
+        JButton exitButton = new JButton(" 4 - Exit "); 
 
         // Action listener for Exit button
-        exitButton.addActionListener(e -> { 
-            // Show a message with a custom "Thank You" button
-            JOptionPane.showOptionDialog(frame, 
-                "Thank you for choosing our booking service center.", 
-                "Goodbye", 
-                JOptionPane.DEFAULT_OPTION, 
-                JOptionPane.INFORMATION_MESSAGE, 
-                null, 
-                new Object[]{"Thank You"}, 
-                "Thank You");
-            
-            // Exit the application after the message is closed
-            System.exit(0); 
-        });
-
-
+        exitButton.addActionListener(e -> {
+                    JOptionPane.showMessageDialog(frame, "Thank you for choosing our booking service center", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
+                    System.exit(0); // Exit the application
+            });
 
         // Action listener for Add button
         addButton.addActionListener(e -> openAddCustomerDialog());
 
-        // Action listener for Display button
-        displayButton.addActionListener(e -> {
-                    // Get the file content
-                    String fileContent = serviceQueue.readFileContent("CustomersLists.txt");
+        // Action listener for the new combined button
+        displayManageButton.addActionListener(e -> {
 
-                    // Create a text area and set its properties
-                    JTextArea textArea = new JTextArea(20, 50);
-                    textArea.setText(fileContent);
-                    textArea.setEditable(false); // Make it read-only
+        // Create a dialog with tabs
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Display & Manage Services");
+        dialog.setSize(600, 400);
+         dialog.setModal(true);
 
-                    // Add the text area to a scroll pane
-                    JScrollPane scrollPane = new JScrollPane(textArea);
-                    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JTabbedPane tabbedPane = new JTabbedPane();
 
-                    // Display the scrollable pane in a dialog
-                    JOptionPane.showMessageDialog(
-                        frame,
-                        scrollPane,
-                        "File Content",
-                        JOptionPane.INFORMATION_MESSAGE
-                    );
-            });
+        // Tab 1: Customer List
+            JPanel customerListPanel = new JPanel(new BorderLayout());
+            JTextArea customerTextArea = new JTextArea(20, 50);
 
-        queueButton.addActionListener(e -> {
+            String filePath = "C:\\Users\\user\\Coding Folder\\JAVA\\Project baru\\SWC3344_PROJECT\\CustomersLists.txt";
+            String fileContent = serviceQueue.readFileContent(filePath);
+
+            if (fileContent == null) {
+                 customerTextArea.setText("Error reading file: " + filePath + "\n\nThe file could not be found or read.\nPlease check the file path and try again.");
+            } else if (fileContent.trim().isEmpty()) {
+                customerTextArea.setText("Error: The file is empty.\nPlease ensure the file contains valid data.");
+            } else {
+
+        // Splitting the file content into lines
+            String[] lines = fileContent.split("\n");
+            StringBuilder formattedContent = new StringBuilder();
+
+            int customerCount = 0; // Counter to track how many customers are processed
+
+        // Debug: Checking the number of lines read
+            System.out.println("Total lines read: " + lines.length);
+
+                for (String line : lines) {
+                    // Skip empty lines
+                    if (line.trim().isEmpty()) {
+                        continue;
+                    }
+
+        // Assuming each line has comma-separated values for customer details
+            String[] details = line.split(", ");
+                            
+        // Debug: Print the details to check the split data
+                System.out.println("Processing line: " + line);
+                System.out.println("Details length: " + details.length);
+                            
+                if (details.length >= 7) {  // Ensure that the line has at least 7 fields (Customer ID, Name, etc.)
+
+        // Basic customer information
+                formattedContent.append("Customer ID: ").append(details[0]).append("\n")
+                    .append("Name: ").append(details[1]).append("\n")
+                    .append("Plate Number: ").append(details[2]).append("\n");
+
+        // Process multiple services
+                int serviceIndex = 3;
+                int serviceCount = 1;
+                while (serviceIndex < details.length - 1) {
+                    formattedContent.append("Service ").append(serviceCount).append(": ").append(details[serviceIndex]).append("\n")
+                        .append("Estimated Time: ").append(details[serviceIndex + 1]).append("\n")
+                        .append("Price: ").append(details[serviceIndex + 2]).append("\n\n"); // Add a blank line for separation
+                            serviceIndex += 3;  // Move to the next service block (service name, time, price)
+                            serviceCount++;
+            }
+                                
+        // Appointment date
+            formattedContent.append("Service Date: ").append(details[details.length - 1]).append("\n")
+                            .append("\n----------------------------------------\n");
+
+                            customerCount++;
+                            } else {
+
+        // Debugging case for lines that don't have the expected format
+                                System.out.println("Skipping invalid line: " + line);
+                            }
+                        }
+                        
+                        if (formattedContent.length() == 0) {
+                            customerTextArea.setText("No valid customer data found.");
+                        } else {
+                            // Show the number of customers processed
+                            customerTextArea.setText("Total customers processed: " + customerCount + "\n\n" + formattedContent.toString());
+                        }
+                    }
+
+                    customerTextArea.setEditable(false);
+                    customerListPanel.add(new JScrollPane(customerTextArea), BorderLayout.CENTER);
+                    tabbedPane.addTab("Customer List", customerListPanel);
+
+                    // Assuming that serviceQueue.loadCustomersFromFile() loads data for all lanes
                     serviceQueue.loadCustomersFromFile("C:\\Users\\user\\Coding Folder\\JAVA\\Project baru\\SWC3344_PROJECT\\CustomersLists.txt");
 
-                    // Fetch data from ServiceQueue
+                    // Tab 1: Display Lane 1 (Customers with 3 or Fewer Services - Lane 1)
+                    JPanel customersByLanePanel = new JPanel(new BorderLayout());
+                    JTextArea lane1TextArea = new JTextArea(20, 50);
+
+                    // Fetch Lane 1 data
                     Queue<CustInfo> lane1 = serviceQueue.getLane1Queue();
+                    StringBuilder lane1DisplayText = new StringBuilder();
+                    int customerCountLane1 = 0;
+
+                    // Format lane 1 data (Customers with 3 or fewer services assigned to Lane 1)
+                    lane1DisplayText.append("Lane 1 (Customers with 3 or Fewer Services):\n");
+                    for (CustInfo cust : lane1) {
+                        // Process each customer for Lane 1
+                        lane1DisplayText.append("Customer ID: ").append(cust.getID()).append("\n");
+                        lane1DisplayText.append("Name: ").append(cust.getName()).append("\n");
+                        lane1DisplayText.append("Plate Number: ").append(cust.getPlateNum()).append("\n");
+
+                        // Process the customer's services
+                        for (ServiceInfo service : cust.getServiceList()) {
+                            lane1DisplayText.append("Service Name: ").append(service.getServiceName()).append("\n");
+                            lane1DisplayText.append("Estimated Time: ").append(service.getEstimatedCompletionTime()).append("\n");
+                            lane1DisplayText.append("Cost: RM").append(service.getServiceCost()).append("\n");
+                            lane1DisplayText.append("Service Date: ").append(service.getServiceDate()).append("\n");
+                            lane1DisplayText.append("\n"); // Add space between services
+                        }
+
+                        lane1DisplayText.append("----------------------------------------\n");
+                        customerCountLane1++;
+                    }
+
+                    if (customerCountLane1 == 0) {
+                        lane1DisplayText.append("No customers for Lane 1.\n");
+                    }
+
+                    lane1DisplayText.insert(0, "Total customers processed in Lane 1: " + customerCountLane1 + "\n\n");
+
+                    // Set the text into the JTextArea and make it non-editable
+                    lane1TextArea.setText(lane1DisplayText.toString());
+                    lane1TextArea.setEditable(false);
+
+                    // Add the JTextArea into a JScrollPane for scrolling
+                    customersByLanePanel.add(new JScrollPane(lane1TextArea), BorderLayout.CENTER);
+
+                    // Add this panel to the tabbed pane
+                    tabbedPane.addTab("Display Lane 1", customersByLanePanel);
+
+                    // Tab 2: Display Lane 2 (Customers with 3 or Fewer Services - Lane 2)
+                    JPanel displayLane2Panel = new JPanel(new BorderLayout());
+                    JTextArea lane2TextArea = new JTextArea(20, 50);
+
+                    // Fetch Lane 2 data
                     Queue<CustInfo> lane2 = serviceQueue.getLane2Queue();
+                    StringBuilder lane2DisplayText = new StringBuilder();
+                    int customerCountLane2 = 0;
+
+                    // Format lane 2 data (Customers with 3 or fewer services assigned to Lane 2)
+                    lane2DisplayText.append("Lane 2 (Customers with 3 or Fewer Services):\n");
+                    for (CustInfo cust : lane2) {
+                        // Process each customer for Lane 2
+                        lane2DisplayText.append("Customer ID: ").append(cust.getID()).append("\n");
+                        lane2DisplayText.append("Name: ").append(cust.getName()).append("\n");
+                        lane2DisplayText.append("Plate Number: ").append(cust.getPlateNum()).append("\n");
+
+                        // Process the customer's services
+                        for (ServiceInfo service : cust.getServiceList()) {
+                            lane2DisplayText.append("Service Name: ").append(service.getServiceName()).append("\n");
+                            lane2DisplayText.append("Estimated Time: ").append(service.getEstimatedCompletionTime()).append("\n");
+                            lane2DisplayText.append("Cost: RM").append(service.getServiceCost()).append("\n");
+                            lane2DisplayText.append("Service Date: ").append(service.getServiceDate()).append("\n");
+                            lane2DisplayText.append("\n"); // Add space between services
+                        }
+
+                        lane2DisplayText.append("----------------------------------------\n");
+                        customerCountLane2++;
+                    }
+
+                    if (customerCountLane2 == 0) {
+                        lane2DisplayText.append("No customers for Lane 2.\n");
+                    }
+
+                    lane2DisplayText.insert(0, "Total customers processed in Lane 2: " + customerCountLane2 + "\n\n");
+
+                    // Set the text into the JTextArea and make it non-editable
+                    lane2TextArea.setText(lane2DisplayText.toString());
+                    lane2TextArea.setEditable(false);
+
+                    // Add the JTextArea into a JScrollPane for scrolling
+                    displayLane2Panel.add(new JScrollPane(lane2TextArea), BorderLayout.CENTER);
+
+                    // Add this panel to the tabbed pane
+                    tabbedPane.addTab("Display Lane 2", displayLane2Panel);
+
+
+                    // Tab 3: Display Lane 3 (Customers with More Than 3 Services, Limit to 4 Service Types per Customer)
+                    JPanel displayLane3Panel = new JPanel(new BorderLayout());
+                    JTextArea lane3TextArea = new JTextArea(20, 50);
+
+                    // Fetch Lane 3 data
                     Queue<CustInfo> lane3 = serviceQueue.getLane3Queue();
+                    StringBuilder lane3DisplayText = new StringBuilder();
+                    int customerCountLane3 = 0;
 
-                    // Build a string with data for all lanes
-                    StringBuilder displayText = new StringBuilder();
+                    // Format lane 3 data (Customers with more than 3 services)
+                    lane3DisplayText.append("Lane 3 (Customers with More Than 3 Services, Limited to 4 Services):\n");
+                    for (CustInfo cust : lane3) {
+                        // Only process customers with more than 3 services
+                        if (cust.getServiceList() != null && cust.getServiceList().size() > 3) {
+                            lane3DisplayText.append("Customer ID: ").append(cust.getID()).append("\n");
+                            lane3DisplayText.append("Name: ").append(cust.getName()).append("\n");
+                            lane3DisplayText.append("Plate Number: ").append(cust.getPlateNum() != null ? cust.getPlateNum() : "Unknown Plate").append("\n");
 
-                    // Append Lane 1 data
-                    displayText.append("Lane 1:\n");
-                    for (CustInfo cust : lane1)
-                    {
-                        displayText.append(cust.toString()).append("\n");
+                            // Process only the first 4 services for this customer
+                            int serviceLimit = Math.min(cust.getServiceList().size(), 4); // Limit to 4 services
+
+                            for (int i = 0; i < serviceLimit; i++) {
+                                ServiceInfo service = cust.getServiceList().get(i);
+                                lane3DisplayText.append("--------------------------------------------------------\n");
+                                lane3DisplayText.append("Service Name: ").append(service.getServiceName()).append("\n");
+
+                                // Ensure service details are displayed correctly
+                                String estimatedTime = service.getEstimatedCompletionTime() != null ? service.getEstimatedCompletionTime() : "TBD";
+                                double cost = service.getServiceCost();
+                                String serviceDate = service.getServiceDate() != null ? service.getServiceDate() : "TBD";
+
+                                // Display the service attributes
+                                lane3DisplayText.append("Estimated Time: ").append(estimatedTime).append("\n");
+                                lane3DisplayText.append("Cost: RM").append(cost > 0 ? cost : "0.0").append("\n");
+                                lane3DisplayText.append("Service Date: ").append(serviceDate).append("\n");
+                            }
+
+                            lane3DisplayText.append("----------------------------------------\n");
+                            customerCountLane3++;
+                        }
                     }
 
-                    // Append Lane 2 data
-                    displayText.append("\nLane 2:\n");
-                    for (CustInfo cust : lane2)
-                    {
-                        displayText.append(cust.toString()).append("\n");
+                    if (customerCountLane3 == 0) {
+                        lane3DisplayText.append("No customers for Lane 3.\n");
                     }
 
-                    // Append Lane 1 data
-                    displayText.append("\nLane 3:\n");
-                    for (CustInfo cust : lane3)
-                    {
-                        displayText.append(cust.toString()).append("\n");
-                    }
+                    lane3DisplayText.insert(0, "Total customers processed in Lane 3: " + customerCountLane3 + "\n\n");
 
-                    // Create a JTextArea and add the text
-                    JTextArea textArea = new JTextArea(20, 50);
-                    textArea.setText(displayText.toString());
-                    textArea.setEditable(false);
+                    // Set the text into the JTextArea and make it non-editable
+                    lane3TextArea.setText(lane3DisplayText.toString());
+                    lane3TextArea.setEditable(false);
 
-                    // Add the text area to a scroll pane
-                    JScrollPane scrollPane = new JScrollPane(textArea);
-                    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                    // Add the JTextArea into a JScrollPane for scrolling
+                    displayLane3Panel.add(new JScrollPane(lane3TextArea), BorderLayout.CENTER);
 
-                    // Display the scrollable pane in a dialog
-                    JOptionPane.showMessageDialog(
-                        frame,
-                        scrollPane,
-                        "Customers by lane",
-                        JOptionPane.INFORMATION_MESSAGE
-                    );
+                    // Add this panel to the tabbed pane
+                    tabbedPane.addTab("Display Lane 3", displayLane3Panel);
+                    
+
+                    // Tab 3: Completed Transactions
+                    JPanel completedTransactionsPanel = new JPanel(new BorderLayout());
+
+                    // Top buttons for managing transactions
+                    JPanel transactionButtonsPanel = new JPanel(new FlowLayout());
+                    JButton addTransactionButton = new JButton("Add Transaction");
+                    JButton viewTransactionsButton = new JButton("View Transactions");
+                    transactionButtonsPanel.add(addTransactionButton);
+                    transactionButtonsPanel.add(viewTransactionsButton);
+
+                    JTextArea transactionsTextArea = new JTextArea(20, 50);
+                    transactionsTextArea.setEditable(false);
+
+                    addTransactionButton.addActionListener(ev -> {
+                                String customerName = JOptionPane.showInputDialog("Enter Customer Name:");
+                                if (customerName == null) return;
+
+                                String costInput = JOptionPane.showInputDialog("Enter Total Cost:");
+                                if (costInput == null) return;
+
+                                try {
+                                    double totalCost = Double.parseDouble(costInput);
+                                    completeStack.addTransaction(customerName, totalCost);
+                                    JOptionPane.showMessageDialog(null, "Transaction added successfully!");
+                                } catch (NumberFormatException ex) {
+                                    JOptionPane.showMessageDialog(null, "Invalid cost. Please enter a numeric value.");
+                                }
+                        });
+
+                    viewTransactionsButton.addActionListener(ev -> {
+                                StringBuilder transactionData = new StringBuilder();
+                                for (CompleteStack.Transaction transaction : completeStack.getTransactions()) {
+                                    transactionData.append(transaction.toString()).append("\n");
+                                }
+                                transactionsTextArea.setText(transactionData.toString());
+                        });
+
+                    completedTransactionsPanel.add(transactionButtonsPanel, BorderLayout.NORTH);
+                    completedTransactionsPanel.add(new JScrollPane(transactionsTextArea), BorderLayout.CENTER);
+                    tabbedPane.addTab("Completed Transactions", completedTransactionsPanel);
+
+                    // Add tabs to dialog
+                    dialog.add(tabbedPane);
+
+                    // Display the dialog
+                    dialog.setLocationRelativeTo(null);
+                    dialog.setVisible(true);
             });
 
         // Action listener for Remove button
@@ -148,8 +355,7 @@ public class MainMenu {
         // Add the other buttons to the button panel
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
-        buttonPanel.add(displayButton);
-        buttonPanel.add(queueButton);
+        buttonPanel.add(displayManageButton);
         buttonPanel.add(exitButton);
 
         panel.add(buttonPanel);
@@ -164,48 +370,49 @@ public class MainMenu {
     }
 
     private static void loadCustomersFromFile(String filename, LinkedList<CustInfo> custList) {
-        try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
-            String inData;
-            while ((inData = in.readLine()) != null) {
-                if (inData.trim().isEmpty()) continue; // Skip empty lines
+    try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
+        String inData;
+        
+        while ((inData = in.readLine()) != null) {
+            if (inData.trim().isEmpty()) continue; // Skip empty lines
+            
+            String[] tokens = inData.split(",");
+            if (tokens.length < 3) continue; // Skip lines with insufficient data
 
-                String[] tokens = inData.split(",");
-                if (tokens.length < 3) continue; // Skip lines with insufficient data
+            // Extract customer details (ID, Name, Plate Number)
+            String custID = tokens[0].trim();
+            String custName = tokens[1].trim();
+            String plateNum = tokens[2].trim();
+            CustInfo cust = new CustInfo(custID, custName, plateNum);
 
-                // Extract customer details
-                String custID = tokens[0].trim();
-                String custName = tokens[1].trim();
-                String plateNum = tokens[2].trim();
-                CustInfo cust = new CustInfo(custID, custName, plateNum);
+            // Extract services (starting from index 3)
+            for (int i = 3; i < tokens.length; i += 6) { 
+                try {
+                    String serviceID = (i < tokens.length) ? tokens[i].trim() : "Unknown";
+                    String serviceName = (i + 1 < tokens.length) ? tokens[i + 1].trim() : "Unknown";
+                    String serviceType = (i + 2 < tokens.length) ? tokens[i + 2].trim() : "General";
+                    double serviceCost = (i + 3 < tokens.length && tokens[i + 3].matches("\\d+(\\.\\d+)?"))
+                        ? Double.parseDouble(tokens[i + 3].trim()) : 0.0;
+                    String serviceDate = (i + 4 < tokens.length) ? tokens[i + 4].trim() : "N/A";
+                    String estimatedCompletionTime = (i + 5 < tokens.length) ? tokens[i + 5].trim() : "N/A";
 
-                // Extract services
-                for (int i = 3; i < tokens.length; i += 6) { 
-                    try {
-                        String serviceID = (i < tokens.length) ? tokens[i].trim() : "Unknown";
-                        String serviceName = (i + 1 < tokens.length) ? tokens[i + 1].trim() : "Unknown";
-                        String serviceType = (i + 2 < tokens.length) ? tokens[i + 2].trim() : "General";
-                        double serviceCost = (i + 3 < tokens.length && tokens[i + 3].matches("\\d+(\\.\\d+)?"))
-                            ? Double.parseDouble(tokens[i + 3].trim())
-                            : 0.0;
-                        String serviceDate = (i + 4 < tokens.length) ? tokens[i + 4].trim() : "N/A";
-                        String estimatedCompletionTime = (i + 5 < tokens.length) ? tokens[i + 5].trim() : "N/A";
-
-                        ServiceInfo service = new ServiceInfo(serviceID, serviceName, serviceType, serviceCost, serviceDate, estimatedCompletionTime);
-                        cust.addService(service);
-                    } catch (IndexOutOfBoundsException e) {
-                        System.err.println("Incomplete service data: " + e.getMessage());
-                    } catch (NumberFormatException e) {
-                        System.err.println("Invalid numeric format: " + e.getMessage());
-                    }
+                    // Create a new service and add to customer
+                    ServiceInfo service = new ServiceInfo(serviceID, serviceName, serviceType, serviceCost, serviceDate, estimatedCompletionTime);
+                    cust.addService(service);
+                } catch (IndexOutOfBoundsException e) {
+                    System.err.println("Incomplete service data: " + e.getMessage());
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid numeric format in service data: " + e.getMessage());
                 }
-
-                // Add the customer to the list
-                custList.add(cust);
             }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error reading file: " + e.getMessage(), "File Read Error", JOptionPane.ERROR_MESSAGE);
+
+            // Add the customer to the list
+            custList.add(cust);
         }
+    } catch (IOException e) {
+        System.err.println("Error reading file: " + e.getMessage());
     }
+}
 
     private void updateTotalCost(JComboBox<String> servicetypeField1, JComboBox<String> servicetypeField2, JComboBox<String> servicetypeField3, JTextField serviceCostField) {
         // Service cost map
@@ -340,12 +547,11 @@ public class MainMenu {
             });
 
         // Add OK button to confirm adding the customer
-        JButton okButton = new JButton("Added");
+        JButton okButton = new JButton("OK");
         okButton.addActionListener(e -> {
                     String custID = custIDField.getText().trim();
                     String custName = custNameField.getText().trim();
                     String plateNum = plateNumField.getText().trim();
-                    String appointmentDate = appointmentDateField.getText().trim(); // Get the Appointment Date from the field
 
                     CustInfo newCustomer = new CustInfo(custID, custName, plateNum);
 
@@ -378,50 +584,67 @@ public class MainMenu {
         dialog.setVisible(true); // Show the dialog
     }
 
-    private void openRemoveCustomerDialog() {
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Remove Customer");
-        dialog.setSize(400, 200);
+            private void openRemoveCustomerDialog() {
+    // Create a new dialog window for removing a customer
+    JDialog dialog = new JDialog();
+    dialog.setTitle("Remove Customer");  // Set dialog title
+    dialog.setSize(400, 300);  // Set the dialog size
 
-        JPanel dialogPanel = new JPanel();
-        dialogPanel.setLayout(new GridLayout(2, 2));
+    // Create a panel to hold the components inside the dialog
+    JPanel dialogPanel = new JPanel(new BorderLayout());
 
-        JTextField custIDField = new JTextField();
-        dialogPanel.add(new JLabel("Customer ID:"));
-        dialogPanel.add(custIDField);
+    // Create a list model and populate it with customer names and IDs from the custList
+    DefaultListModel<String> customerModel = new DefaultListModel<>();
+    for (CustInfo customer : custList) {
+        customerModel.addElement(customer.getName() + " (" + customer.getID() + ")");  // Display name and ID
+    }
 
-        JButton removeButton = new JButton("Remove");
-        removeButton.addActionListener(e -> {
-                    String custID = custIDField.getText().trim();
+    // Create a JList to display the customer names in the dialog
+    JList<String> customerList = new JList<>(customerModel);
+    customerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  // Allow only one selection at a time
 
-                    CustInfo customerToRemove = null;
-                    for (CustInfo customer : custList) {
-                        if (customer.getID().equals(custID)) {
-                            customerToRemove = customer;
-                            break;
-                        }
-                    }
+    // Wrap the JList in a JScrollPane to enable scrolling if there are many customers
+    JScrollPane scrollPane = new JScrollPane(customerList);
+    dialogPanel.add(scrollPane, BorderLayout.CENTER);  // Add the scrollable list to the center of the panel
 
-                    if (customerToRemove != null) {
-                        custList.remove(customerToRemove);
-                        JOptionPane.showMessageDialog(dialog, "Customer removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(dialog, "Customer ID not found!", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+    // Create a "Remove" button and add an action listener
+    JButton removeButton = new JButton("Remove");
+    removeButton.addActionListener(e -> {
+        int selectedIndex = customerList.getSelectedIndex();  // Get the selected customer index
 
-                    dialog.dispose();
-            });
+        // If no customer is selected, show an error message
+        if (selectedIndex == -1) {
+            JOptionPane.showMessageDialog(dialog, "Please select a customer to remove.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // If a customer is selected, remove them from the data structure and the UI list
+            custList.remove(selectedIndex);  // Remove from the customer data list
+            customerModel.remove(selectedIndex);  // Update the displayed list
+            JOptionPane.showMessageDialog(dialog, "Customer removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);  // Show success message
+        }
+    });
 
-        // Add OK button at the bottom
-        dialogPanel.add(new JPanel()); // Empty panel for layout purposes
-        dialogPanel.add(removeButton); // Add the remove button
+    // Add the remove button at the bottom of the dialog
+    JPanel buttonPanel = new JPanel();
+    buttonPanel.add(removeButton);
+    dialogPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        dialog.add(dialogPanel);
+    dialog.add(dialogPanel);
+    dialog.setModal(true); // Set dialog as modal
+    dialog.setLocationRelativeTo(null); // Center the dialog on the screen
+    dialog.setVisible(true); // Show the dialog
+}
 
-        dialog.setModal(true); // Set dialog as modal
-        dialog.setLocationRelativeTo(null); // Center the dialog on the screen
-        dialog.setVisible(true); // Show the dialog
-    }   
+    public void saveToFile(String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (CompleteStack.Transaction transaction : completeStack.getTransactions()) { // Fully qualify the class
+                writer.write(transaction.getCustomerName() + "," + transaction.getTotalCost());
+                writer.newLine();
+            }
+            System.out.println("Completed transactions saved successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+    }
 
     public static void main(String[] args) {
         // Start the application
