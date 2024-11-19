@@ -1,101 +1,101 @@
-C001, Jackson, AB123CD, Tire Change, Brake Inspection, Oil Change, 407, 2024-11-23, 4 hours  
-C002, Carter, XY456ZT, Brake Inspection, 194, 2024-11-16, 4 hours  
-C003, Lucy, LM789OP, Oil Change, 368, 2024-11-26, 3 hours  
-C004, William, RG234YJ, Tire Change, Oil Change, Brake Inspection, 151, 2024-11-15, 6 hours  
-C005, Evelyn, SD567KI, Battery Replacement, Tire Change, Brake Inspection, 479, 2024-11-09, 5 hours  
-C006, Olivia, QW123RL, Engine Tune-up, Tire Change, Brake Inspection, 287, 2024-11-19, 6 hours  
-C007, Matthew, ZT456PL, Tire Change, Oil Change, Brake Inspection, 90, 2024-11-15, 5 hours  
-C008, Luca, MN987KL, Transmission Service, Tire Change, Oil Change, 77, 2024-11-08, 4 hours  
-C009, Eli, TF345HJ, Battery Replacement, 122, 2024-11-10, 4 hours  
-C010, Aaron, BQ678SJ, Tire Change, Engine Tune-up, AC Service, 342, 2024-11-23, 6 hours  
-C011, Addison, AC321NB, Oil Change, 365, 2024-11-04, 3 hours  
-C012, Hunter, LK132HD, Brake Inspection, 312, 2024-11-23, 2 hours  
-C013, Christian, WB457RC, Battery Replacement, Tire Change, Brake Inspection, 479, 2024-11-12, 7 hours  
-C014, Anthony, XJ234KY, Exhaust System Repair, Tire Change, AC Service, 119, 2024-11-03, 5 hours  
-C015, Jacob, RS234LO, Brake Inspection, Transmission Service, Oil Change, 131, 2024-11-06, 5 hours  
-C016, Grayson, YT789UJ, Transmission Service, 152, 2024-11-24, 2 hours  
-C017, Ryan, ZH678UI, Oil Change, Transmission Service, Brake Inspection, 326, 2024-11-20, 5 hours  
-C018, Riley, UJ456AO, AC Service, Brake Inspection, Oil Change, 343, 2024-11-14, 5 hours  
-C019, John, PV567QW, Brake Inspection, 454, 2024-11-29, 3 hours  
-C020, Andrew, MT342PX, Oil Change, Tire Change, Brake Inspection, 228, 2024-11-21, 7 hours  
-C021, Ellie, DF123KL, Transmission Service, Brake Inspection, Tire Change, 140, 2024-11-21, 6 hours  
-C022, Ryan, CP546YR, Tire Change, Brake Inspection, Oil Change, 357, 2024-11-21, 6 hours  
-C023, Hannah, AH754TY, Brake Inspection, Tire Change, AC Service, 233, 2024-11-21, 6 hours  
-C024, Isaac, JN852UL, Tire Change, 201, 2024-11-11, 3 hours  
-C025, Andrew, JH321WG, Tire Change, 145, 2024-11-16, 5 hours  
-C026, Anthony, LB147QF, Battery Replacement, 486, 2024-11-21, 2 hours  
-C027, Christopher, ZG312NB, Tire Change, Engine Tune-up, Transmission Service, 395, 2024-11-22, 6 hours  
-C028, Claire, WH632RM, Brake Inspection, 94, 2024-11-28, 4 hours  
-C029, Thomas, QA768FT, Oil Change, Transmission Service, Battery Replacement, 424, 2024-11-08, 6 hours  
-C030, Riley, GT569LU, Exhaust System Repair, Tire Change, AC Service, 64, 2024-11-14, 6 hours  
-C031, Zoe, UY123BG, Brake Inspection, 181, 2024-11-30, 1 hour  
-C032, Jacob, RT456PF, Tire Change, 177, 2024-11-27, 4 hours  
-C033, Christian, CK321JE, Tire Change, 156, 2024-11-04, 2 hours  
-C034, Nina, LU823KT, Transmission Service, 397, 2024-11-06, 4 hours  
-C035, Eli, JQ987SW, Brake Inspection, 267, 2024-11-09, 3 hours  
-C036, Carter, MB623RK, AC Service, Brake Inspection, Oil Change, 375, 2024-11-26, 5 hours  
-C037, Gianna, PC476NE, Brake Inspection, Tire Change, AC Service, 209, 2024-11-05, 6 hours  
-C038, Jasmine, VC234PR, Brake Inspection, 285, 2024-11-03, 5 hours  
-C039, Sophie, GF732RL, Tire Change, Brake Inspection, AC Service, 328, 2024-11-26, 5 hours  
-C040, David, AZ324LR, Tire Change, Brake Inspection, Engine Tune-up, 180, 2024-11-05, 6 hours  
-C041, Samuel, PU678YT, Engine Tune-up, 428, 2024-11-30, 4 hours  
-C042, Jackson, TE432YH, Brake Inspection, Oil Change, Tire Change, 363, 2024-11-13, 5 hours  
-C043, Samuel, NZ123RP, Oil Change, 269, 2024-11-07, 5 hours  
-C044, Oliver, MO543XE, Tire Change, 63, 2024-11-29, 5 hours  
-C045, Christopher, QK432BU, Tire Change, Oil Change, Engine Tune-up, 489, 2024-11-29, 6 hours  
-C046, Sofia, AV678SB, Brake Inspection, 434, 2024-11-11, 4 hours  
-C047, Lila, JE321PC, Tire Change, Brake Inspection, AC Service, 281, 2024-11-03, 4 hours  
-C048, William, LG456XI, Transmission Service, 211, 2024-11-17, 3 hours  
-C049, Christian, HG987OP, Battery Replacement, 479, 2024-11-25, 2 hours  
-C050, Paige, KQ345TY, Oil Change, 442, 2024-11-05, 2 hours  
-C051, Benjamin, SY456LD, Transmission Service, 94, 2024-11-12, 2 hours  
-C052, Victoria, EV678KL, Tire Change, Brake Inspection, Transmission Service, 355, 2024-11-21, 6 hours  
-C053, Benjamin, NG123LT, Tire Change, 59, 2024-11-07, 4 hours  
-C054, Sophia, HL987SV, Transmission Service, Engine Tune-up, Tire Change, 469, 2024-11-29, 5 hours  
-C055, David, KU234PH, Battery Replacement, 315, 2024-11-05, 5 hours  
-C056, Ethan, AC345QR, Brake Inspection, Tire Change, AC Service, 241, 2024-10-31, 6 hours  
-C057, Skylar, TW456YD, Tire Change, Brake Inspection, Oil Change, 111, 2024-11-07, 5 hours  
-C058, Elijah, OW234GH, Transmission Service, Tire Change, Oil Change, 388, 2024-11-04, 5 hours  
-C059, Nora, RW987IT, Transmission Service, AC Service, Tire Change, 483, 2024-10-31, 6 hours  
-C060, Christian, DX234MK, Brake Inspection, 456, 2024-11-29, 2 hours  
-C061, Jasmine, KL234DF, Battery Replacement, 137, 2024-11-18, 5 hours  
-C062, Jasmine, JF876GH, Battery Replacement, 210, 2024-11-01, 4 hours  
-C063, Aaron, LN987PQ, Battery Replacement, Tire Change, 135, 2024-11-26, 5 hours  
-C064, Nicholas, ZK654RT, Oil Change, 242, 2024-11-28, 3 hours  
-C065, Joshua, DP321KU, Transmission Service, 184,2024-11-02, 2 hours  
-C066, Grace, TN876BI, Tire Change, 160, 2024-11-06, 2 hours  
-C067, Gianna, FW324HE, Transmission Service, 274, 2024-11-22, 6 hours  
-C068, Addison, YR123FL, Oil Change, 479, 2024-11-05, 3 hours  
-C069, Ryan, LA675PQ, Brake Inspection, 379, 2024-11-11, 2 hours  
-C070, David, KD347SP, Battery Replacement, 391, 2024-11-28, 3 hours  
-C071, Andrew, XH234OR, Transmission Service, 153, 2024-11-17, 2 hours  
-C072, Aaron, UB765QI, Oil Change, 454, 2024-11-07, 4 hours  
-C073, Ethan, KP678NZ, Brake Inspection, 415, 2024-11-27, 5 hours  
-C074, Liam, RG876QD, Tire Change, 211, 2024-11-30, 3 hours  
-C075, Olivia, TY123MK, Transmission Service, 385, 2024-11-24, 5 hours  
-C076, Emily, AB987XY, Brake Inspection, 290, 2024-11-10, 5 hours  
-C077, Benjamin, ZX987IO, Oil Change, 112, 2024-11-26, 3 hours  
-C078, Mia, ZV324GH, Tire Change, 470, 2024-11-13, 4 hours  
-C079, Lucas, RT543BX, Engine Tune-up, 358, 2024-11-18, 5 hours  
-C080, Charlotte, UI456TY, AC Service, 142, 2024-11-22, 4 hours  
-C081, Jack, HK654BQ, Brake Inspection, 268, 2024-11-17, 2 hours  
-C082, Sarah, QW123AB, Transmission Service, 200, 2024-11-19, 4 hours  
-C083, Ethan, SP234OP, Battery Replacement, 364, 2024-11-08, 4 hours  
-C084, Ava, EV876DF, Tire Change, 350, 2024-11-04, 5 hours  
-C085, Noah, DF342PT, Oil Change, 197, 2024-11-12, 3 hours  
-C086, Lucas, ER765PL, Tire Change, 115, 2024-11-09, 4 hours  
-C087, Mia, YG890QW, Transmission Service, 436, 2024-11-01, 3 hours  
-C088, Henry, OP234LD, Brake Inspection, 120, 2024-11-29, 5 hours  
-C089, Clara, VQ567JB, Engine Tune-up, 389, 2024-11-28, 4 hours  
-C090, Isaac, PL123TW, Exhaust System Repair, 159, 2024-11-18, 3 hours  
-C092, William, KO234TH, Battery Replacement, 499, 2024-11-10, 5 hours  
-C093, Grace, QP789XT, Transmission Service, 334, 2024-11-21, 4 hours  
-C094, Jacob, TY675LO, AC Service, 278, 2024-11-06, 3 hours  
-C095, Sophia, HR234LO, Brake Inspection, 119, 2024-11-14, 2 hours  
-C096, Lucas, QR321GS, Tire Change, 206, 2024-11-08, 5 hours  
-C097, Victoria, JT123LV, Oil Change, 307, 2024-11-13, 4 hours  
-C098, Oscar, SH324QW, Battery Replacement, 212, 2024-11-27, 3 hours  
-C099, Emily, LK876QR, Engine Tune-up, 135, 2024-11-11, 5 hours  
-C100, Liam, RH567ZY, Tire Change, 463, 2024-11-25, 3 hours  
-C101, Rachel, TY987GP, Transmission Service, 311, 2024-11-15, 3 hours  
+C001, Scott, UV901XY, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C002, Adams, ZC234AB, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C003, Mitchell, DE567GH, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C004, Garcia, IJ789KL, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C005, Martinez, MN012OP, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C006, Rodriguez, QR345ST, Oil Change, 45 min, RM50, 2024-11-23
+C007, Perez, WX678YZ, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C008, Lee, AB901CD, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C009, Gonzalez, EF234GH, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C010, Moore, KL567IJ, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C011, King, OP789QR, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, AC Service, 1 hr, RM100, 2024-11-23
+C012, Lee, ST012UV, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C013, Scott, WX345YZ, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C014, Wright, DE678GH, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C015, Taylor, IJ901KL, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C016, Green, MN234OP, Brake Inspection, 1 hr, RM60, 2024-11-23
+C017, Harris, QR567ST, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C018, Carter, WX890YZ, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C019, White, AB012CD, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C020, Martinez, EF345GH, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C021, Allen, KL678IJ, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C022, Young, OP901QR, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C023, Hill, ST234UV, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C024, Evans, WX567YZ, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C025, Thomas, AB890CD, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C026, Hall, DE012GH, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C027, Allen, QR345ST, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C028, Hernandez, WX678YZ, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C029, Robinson, AB901CD, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C030, Lewis, DE234GH, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C031, Carter, KL890IJ, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C032, Lee, OP890QR, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C033, White, ST012UV, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C034, Scott, WX234YZ, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C035, Harris, AB345CD, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C036, Taylor, DE567GH, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, AC Service, 1 hr, RM100, 2024-11-23
+C037, Anderson, KL890IJ, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C038, Martin, OP234QR, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C039, Lee, ST567UV, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, 2024-11-23
+C040, White, WX890YZ, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C041, Miller, AB678CD, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C042, Moore, DE234GH, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C043, Taylor, KL890IJ, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C044, Wilson, OP234QR, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C045, Walker, ST567UV, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50
+C046, Scott, UV901XY, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C047, Adams, ZC234AB, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C048, Mitchell, DE567GH, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C049, Garcia, IJ789KL, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C050, Martinez, MN012OP, Transmission Service, 1.5 hrs, RM150, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C051, Rodriguez, QR345ST, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C052, Perez, WX678YZ, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C053, Lee, AB901CD, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, AC Service, 1 hr, RM100, 2024-11-23
+C054, Gonzalez, EF234GH, Oil Change, 45 min, RM50, Transmission Service, 1.5 hrs, RM150, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C055, Moore, KL567IJ, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C056, King, OP789QR, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C057, Lee, ST012UV, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C058, Scott, WX345YZ, Engine Tune-up, 1.5 hrs, RM200, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C059, Wright, DE678GH, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C060, Taylor, IJ901KL, Exhaust System Repair, 1 hr, RM180, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C061, Green, MN234OP, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C062, Harris, QR567ST, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C063, Carter, WX890YZ, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C064, White, AB012CD, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, 2024-11-23
+C065, Martinez, EF345GH, Engine Tune-up, 1.5 hrs, RM200, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C066, Allen, KL678IJ, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C067, Young, OP901QR, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, 2024-11-23
+C068, Hill, ST234UV, Transmission Service, 1.5 hrs, RM150, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C069, Evans, WX567YZ, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C070, Thomas, AB890CD, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C071, Hall, DE012GH, Exhaust System Repair, 1 hr, RM180, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C072, Allen, QR345ST, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C073, Hernandez, WX678YZ, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C074, Robinson, AB901CD, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C075, Lewis, DE234GH, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C076, Carter, KL890IJ, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C077, Lee, OP890QR, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C078, White, ST012UV, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C079, Scott, WX234YZ, Tire Change, 1.5 hrs, RM75, Engine Tune-up, 1.5 hrs, RM200, Brake Inspection, 1 hr, RM60, 2024-11-23
+C080, Harris, AB345CD, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C081, Taylor, DE567GH, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Exhaust System Repair, 1 hr, RM180, 2024-11-23
+C082, Anderson, KL890IJ, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C083, Martin, OP234QR, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C084, Lee, ST567UV, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, 2024-11-23
+C085, White, WX890YZ, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C086, King, AB345CD, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C087, Young, DE678GH, Transmission Service, 1.5 hrs, RM150, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, 2024-11-23
+C088, Wright, KL901IJ, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C089, Harris, OP234QR, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C090, Moore, WX567YZ, Engine Tune-up, 1.5 hrs, RM200, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C091, Evans, AB890CD, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, 2024-11-23
+C092, Robinson, DE345GH, Tire Change, 1.5 hrs, RM75, Engine Tune-up, 1.5 hrs, RM200, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
+C093, Anderson, KL678IJ, Transmission Service, 1.5 hrs, RM150, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, 2024-11-23
+C094, Hall, OP890QR, Exhaust System Repair, 1 hr, RM180, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C095, Thomas, WX234YZ, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C096, Green, AB012CD, Tire Change, 1.5 hrs, RM75, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Engine Tune-up, 1.5 hrs, RM200, 2024-11-23
+C097, White, KL345IJ, Brake Inspection, 1 hr, RM60, Oil Change, 45 min, RM50, Tire Change, 1.5 hrs, RM75, 2024-11-23
+C098, Carter, DE678GH, Tire Change, 1.5 hrs, RM75, Engine Tune-up, 1.5 hrs, RM200, Oil Change, 45 min, RM50, 2024-11-23
+C099, Robinson, WX890YZ, Brake Inspection, 1 hr, RM60, Tire Change, 1.5 hrs, RM75, Oil Change, 45 min, RM50, Transmission Service, 1.5 hrs, RM150, 2024-11-23
+C100, Allen, OP234QR, Transmission Service, 1.5 hrs, RM150, Oil Change, 45 min, RM50, Brake Inspection, 1 hr, RM60, 2024-11-23
 
