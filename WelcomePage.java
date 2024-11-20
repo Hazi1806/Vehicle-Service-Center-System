@@ -4,35 +4,43 @@ import javax.swing.*;
 public class WelcomePage {
 
     public WelcomePage() {
-        // Create a dialog box to serve as our welcome message pop-up.
+        // Let's create a pop-up dialog to welcome our users.
         JDialog dialog = new JDialog();
-        dialog.setTitle("Welcome"); // Give the dialog a title that sets the tone.
-        dialog.setSize(300, 150); // Set a fixed size—big enough to look good, but not overwhelming.
-        dialog.setLayout(new BorderLayout()); // Use BorderLayout to organize components easily.
+        
+        // Setting the title of the dialog to "Welcome"
+        dialog.setTitle("Welcome");
+        
+        // the size of the dialog 
+        dialog.setSize(300, 150);
+        
+        // We're using BorderLayout to make it easy to arrange things inside the dialog.
+        dialog.setLayout(new BorderLayout());
 
-        // Add a label with a warm, friendly welcome message.
-        JLabel welcomeLabel = new JLabel("Welcome to the Vehicle Service Center!", SwingConstants.CENTER);
-        dialog.add(welcomeLabel, BorderLayout.CENTER); // Place the label in the center of the dialog.
+        // This label will show welcome message and center it 
+        JLabel welcomeLabel = new JLabel("Welcome to WiseWheel Service Center!", SwingConstants.CENTER);
+        
+        // Adding the label to the center of the dialog. This is where we want users to focus.
+        dialog.add(welcomeLabel, BorderLayout.CENTER);
 
-        // Create a button labeled "Welcome" 
+        //  button that says "Welcome". 
         JButton welcomeButton = new JButton("Welcome");
-
-        // Adjust the button size to fit the dialog aesthetics—neither too big nor too small.
-        welcomeButton.setPreferredSize(new Dimension(100, 30)); 
-
-        // Add a click event to the button so the dialog closes gracefully when clicked.
+        
+        // Setting a preferred size for the button so it fits well and looks good.
+        welcomeButton.setPreferredSize(new Dimension(100, 30));
+        
+        // When the button is clicked, we'll close the dialog. 
         welcomeButton.addActionListener(e -> dialog.dispose());
-
-        // Place the button neatly at the bottom of the dialog using BorderLayout.SOUTH.
+        
+        // Placing the button at the bottom of the dialog. 
         dialog.add(welcomeButton, BorderLayout.SOUTH);
 
-        // Make the dialog modal to ensure it gets the user's full attention.
+        // Making the dialog modal so users have to deal with this pop-up before doing anything else.
         dialog.setModal(true);
-
-        // Center the dialog on the screen—it feels more professional and user-friendly.
+        
+        // Centering the dialog on the screen 
         dialog.setLocationRelativeTo(null);
-
-        // Finally, show the dialog to the user with our warm welcome!
+        
+        // show the dialog
         dialog.setVisible(true);
     }
 }
