@@ -1,46 +1,83 @@
-import java.awt.*;
-import javax.swing.*;
+import java.io.*;
+import java.util.List;
+import java.util.Stack;
 
-public class WelcomePage {
+// Class to manage a stack of completed transactions
+public class CompleteStack {
+    // Stack to store transactions
+    private Stack<Transaction> transactions = new Stack<>();
 
-    public WelcomePage() {
-        // Let's create a pop-up dialog to welcome our users.
-        JDialog dialog = new JDialog();
-        
-        // Setting the title of the dialog to "Welcome"
-        dialog.setTitle("Welcome");
-        
-        // the size of the dialog 
-        dialog.setSize(300, 150);
-        
-        // We're using BorderLayout to make it easy to arrange things inside the dialog.
-        dialog.setLayout(new BorderLayout());
+    // Method to add a new transaction to the stack
+    public void addTransaction(String customerName, double totalCost) {
+        transactions.push(new Transaction(customerName, totalCost));
+    }
 
-        // This label will show welcome message and center it 
-        JLabel welcomeLabel = new JLabel("Welcome to WiseWheel Service Center!", SwingConstants.CENTER);
-        
-        // Adding the label to the center of the dialog. This is where we want users to focus.
-        dialog.add(welcomeLabel, BorderLayout.CENTER);
+    // Method to get the stack of transactions
+    public Stack<Transaction> getTransaction() {
+        return transactions;
+    }
+    
+    // Method to get the transactions as a list
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+    
+    // Inner class to represent a single transaction
+    public static class Transaction {
+        private String customerName; // Name of the customer
+        private double totalCost;    // Total cost of the transaction
 
-        //  button that says "Welcome". 
-        JButton welcomeButton = new JButton("Welcome");
-        
-        // Setting a preferred size for the button so it fits well and looks good.
-        welcomeButton.setPreferredSize(new Dimension(100, 30));
-        
-        // When the button is clicked, we'll close the dialog. 
-        welcomeButton.addActionListener(e -> dialog.dispose());
-        
-        // Placing the button at the bottom of the dialog. 
-        dialog.add(welcomeButton, BorderLayout.SOUTH);
+        // Constructor for Transaction
+        public Transaction(String customerName, double totalCost) {
+            this.customerName = customerName;
+            this.totalCost = totalCost;
+        }
 
-        // Making the dialog modal so users have to deal with this pop-up before doing anything else.
-        dialog.setModal(true);
-        
-        // Centering the dialog on the screen 
-        dialog.setLocationRelativeTo(null);
-        
-        // show the dialog
-        dialog.setVisible(true);
+        // Getter for customer name
+        public String getCustomerName() {
+            return customerName;
+        }
+
+        // Getter for total cost
+        public double getTotalCost() {
+            return totalCost;
+        }
+
+        // String representation of the transaction
+        @Override
+        public String toString() {
+            return "Customer: " + customerName + ", Total Cost: RM " + totalCost;
+        }
+    }
+
+    // Method to display all completed transactions
+    public void displayCompletedTransactions() {
+        if (transactions.isEmpty()) { // Check if the stack is empty
+            System.out.println("No completed transactions available.");
+            return;
+        }
+        // Iterate through and print each transaction
+        for (Transaction t : transactions) {
+            System.out.println(t);
+        }
+    }
+
+    // Method to load transactions from a file
+    public void loadFromFile(String filename) {
+        // Read file and parse transactions
+        try (BufferedReader reader = new BufferedReader(new FileReader("CustomersLists.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) { // Read each line
+                String[] tokens = line.split(","); // Split line by comma
+                if (tokens.length == 2) { // Ensure valid format
+                    String customerName = tokens[0].trim(); // Get customer name
+                    double totalCost = Double.parseDouble(tokens[1].trim()); // Get total cost
+                    transactions.push(new Transaction(customerName, totalCost)); // Add to stack
+                }
+            }
+        } catch (IOException e) {
+            // Handle file reading errors
+            e.printStackTrace();
+        }
     }
 }
