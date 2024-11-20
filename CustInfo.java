@@ -1,55 +1,55 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CustInfo {
     // Attributes
-    private String custID;
-    private String custName;
-    private String vehiclePlateNum;
+    private final String custID;          // Customer ID
+    private final String custName;        // Customer name
+    private final String vehiclePlateNum; // Vehicle plate number
     private final List<ServiceInfo> serviceReq; // List to store service requests for the customer
-    
+
     // Constructor
     public CustInfo(String id, String name, String plateNum) {
-        this.custID = id;
-        this.custName = name;
-        this.vehiclePlateNum = plateNum;
-        this.serviceReq = new ArrayList<>(); // Using ArrayList for better performance
-    }
-    
-    // Mutator methods
-    public void setID(String id) {
-        custID = id;
+        this.custID = id != null ? id : "Unknown ID";     // Ensure non-null ID
+        this.custName = name != null ? name : "Unknown Name";   // Ensure non-null name
+        this.vehiclePlateNum = plateNum != null ? plateNum : "Unknown Plate"; // Ensure non-null plate number
+        this.serviceReq = new ArrayList<>();      // Initialize the service request list
     }
 
-    public void setName(String name) {
-        custName = name;
-    }
-
-    public void setPlateNum(String plateNum) {
-        vehiclePlateNum = plateNum;
-    }
-    
-    // Accessor methods
+    // Accessor (Getter) methods
+    // Retrieves the customer ID
     public String getID() {
         return custID;
     }
-
+    //Retrieves the customer name
     public String getName() {
-        return custName;        
+        return custName;
     }
-
+    //Retrieves the vehicle plate number
     public String getPlateNum() {
         return vehiclePlateNum;
     }
-
+    //Retrieves unmodifiable list of service requests for the customer
     public List<ServiceInfo> getServiceList() {
-        return serviceReq;
+        return Collections.unmodifiableList(serviceReq); // Return unmodifiable list for safety
     }
 
-    // Method to add a service to the customer's list of services
-    public void addService(ServiceInfo service) {
-        serviceReq.add(service); // Add a single service to the service list
+    // Add this method for backward compatibility
+    public List<ServiceInfo> getServices() {
+        return getServiceList();
     }
-    
+
+    // Mutator methods
+    //Add a service request to the customer's service list.
+    public void addService(ServiceInfo service) {
+        if (service != null) {
+            serviceReq.add(service); // Add a single service to the service list
+        } else {
+            throw new IllegalArgumentException("Service cannot be null.");
+        }
+    }
+
     // String representation of the customer information including service details
     @Override
     public String toString() {
@@ -67,6 +67,6 @@ public class CustInfo {
             }
         }
 
-        return customerInfo.toString(); // Return full information about the customer and services
+        return customerInfo.toString(); // Return the complete customer information as a string
     }
 }
