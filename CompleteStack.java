@@ -1,69 +1,46 @@
-import java.io.*;
-import java.util.List;
-import java.util.Stack;
+import java.awt.*;
+import javax.swing.*;
 
-public class CompleteStack {
-    private Stack<Transaction> transactions = new Stack<>();
+public class WelcomePage {
 
-    public void addTransaction(String customerName, double totalCost) {
-        transactions.push(new Transaction(customerName, totalCost));
-    }
+    public WelcomePage() {
+        // Let's create a pop-up dialog to welcome our users.
+        JDialog dialog = new JDialog();
+        
+        // Setting the title of the dialog to "Welcome"
+        dialog.setTitle("Welcome");
+        
+        // the size of the dialog 
+        dialog.setSize(300, 150);
+        
+        // We're using BorderLayout to make it easy to arrange things inside the dialog.
+        dialog.setLayout(new BorderLayout());
 
-    public Stack<Transaction> getTransaction() {
-        return transactions;
-    }
-    
-    public List<Transaction> getTransactions()
-    {
-        return transactions;
-    }
-    
-    public static class Transaction {
-        private String customerName;
-        private double totalCost;
+        // This label will show welcome message and center it 
+        JLabel welcomeLabel = new JLabel("Welcome to WiseWheel Service Center!", SwingConstants.CENTER);
+        
+        // Adding the label to the center of the dialog. This is where we want users to focus.
+        dialog.add(welcomeLabel, BorderLayout.CENTER);
 
-        public Transaction(String customerName, double totalCost) {
-            this.customerName = customerName;
-            this.totalCost = totalCost;
-        }
+        //  button that says "Welcome". 
+        JButton welcomeButton = new JButton("Welcome");
+        
+        // Setting a preferred size for the button so it fits well and looks good.
+        welcomeButton.setPreferredSize(new Dimension(100, 30));
+        
+        // When the button is clicked, we'll close the dialog. 
+        welcomeButton.addActionListener(e -> dialog.dispose());
+        
+        // Placing the button at the bottom of the dialog. 
+        dialog.add(welcomeButton, BorderLayout.SOUTH);
 
-        public String getCustomerName() {
-            return customerName;
-        }
-
-        public double getTotalCost() {
-            return totalCost;
-        }
-
-        @Override
-        public String toString() {
-            return "Customer: " + customerName + ", Total Cost: RM " + totalCost;
-        }
-    }
-
-    public void displayCompletedTransactions() {
-        if (transactions.isEmpty()) {
-            System.out.println("No completed transactions available.");
-            return;
-        }
-        for (Transaction t : transactions) {
-            System.out.println(t);
-        }
-    }
-
-    public void loadFromFile(String filename) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("CustomersLists.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] tokens = line.split(",");
-                if (tokens.length == 2) {
-                    String customerName = tokens[0].trim();
-                    double totalCost = Double.parseDouble(tokens[1].trim());
-                    transactions.push(new Transaction(customerName, totalCost));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Making the dialog modal so users have to deal with this pop-up before doing anything else.
+        dialog.setModal(true);
+        
+        // Centering the dialog on the screen 
+        dialog.setLocationRelativeTo(null);
+        
+        // show the dialog
+        dialog.setVisible(true);
     }
 }
